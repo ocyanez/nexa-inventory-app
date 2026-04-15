@@ -36,7 +36,7 @@ A continuación se muestran algunas vistas clave del sistema en funcionamiento:
 
 ### 🔐 Login
 Pantalla de autenticación de usuarios.
-![Login](assets/Login.png)
+![Login](https://github.com/ocyanez/nexa-inventory-app/blob/main/assets/login.png)
 
 ### 🏠 Inicio
 Vista principal de la aplicación.
@@ -44,19 +44,19 @@ Vista principal de la aplicación.
 
 ### 📦 Productos
 Gestión de inventario y productos.
-![Productos](assets/Productos.png)
+![Productos](https://github.com/ocyanez/nexa-inventory-app/blob/main/assets/Productos.png)
 
 ### ➕ Registro
 Formulario para creación de nuevos productos.
-![Registrar](assets/Registrar.png)
+![Registro](https://github.com/ocyanez/nexa-inventory-app/blob/main/assets/Registrar.png)
 
 ### 📊 Reportes
 Visualización de reportes y análisis.
-![Reportes](assets/Reportes.png)
+![Reportes](https://github.com/ocyanez/nexa-inventory-app/blob/main/assets/Reportes.png)
 
 ### 👤 Perfil
 Gestión de información del usuario.
-![Perfil](assets/Perfil.png)
+![Perfil](https://github.com/ocyanez/nexa-inventory-app/blob/main/assets/Perfil.png)
 
 ---
 
