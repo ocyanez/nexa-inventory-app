@@ -1,0 +1,96 @@
+/* Card exterior */
+.productos-card-outer {
+    background: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #2c2c2c;
+    padding: 16px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Card interior */
+.productos-card {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.productos-header {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    border-left: 4px solid #28a745;
+}
+
+.productos-icon {
+    font-size: 22px;
+    margin-right: 12px;
+}
+
+.productos-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Tabla principal */
+.table-container {
+    margin-top: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-container th,
+.table-container td {
+    padding: 14px 12px;
+    font-size: 14px;
+    border-bottom: 1px solid #eee;
+}
+
+.table-container thead {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
+}
+
+.table-container tbody tr:hover {
+    filter: brightness(0.97);
+    transition: 0.15s;
+}
+
+.check {
+    text-align: center;
+    font-size: 18px;
+}
+
+/* COLORES */
+.row-sin-stock {
+    background-color: #ffe5e5;
+}
+
+.row-baja {
+    background-color: #fff8dc;
+}
+
+.row-media {
+    background-color: #e6f0ff;
+}
+
+.row-alta {
+    background-color: #e6ffed;
+}
+
+/* Carga */
+.loading-message {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 15px;
+}

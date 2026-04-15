@@ -1,0 +1,82 @@
+@startuml Arquitectura_Inferencia_NEXA
+title <size:24>🚀 Arquitectura de Inferencia de IA en Producción</size>
+skinparam shadowing true
+skinparam dpi 150
+
+' --- Estilos ---
+skinparam actorStyle awesome
+skinparam component {
+    BackgroundColor #F7F9F9
+    BorderColor #2C3E50
+    FontColor #2C3E50
+    RoundCorner 10
+}
+skinparam cloud {
+    BackgroundColor #D4E6F1
+    BorderColor #3498DB
+    FontColor #3498DB
+    Shadowing true
+}
+skinparam database {
+    BackgroundColor #FDEBD0
+    BorderColor #E67E22
+    FontColor #E67E22
+}
+skinparam node {
+    BackgroundColor #EAF2F8
+    BorderColor #5DADE2
+    FontColor #5DADE2
+    RoundCorner 15
+}
+
+' --- Actores y Frontend ---
+actor "👤 Usuario" as user
+component "📱 App Móvil (Ionic React)" as frontend #FCF3CF
+
+' =========================================================
+' 1. ENTORNO DE DESPLIEGUE (LA NUBE)
+' =========================================================
+
+cloud "☁️ Google Cloud Run (Servicio REST)" as gcr_env {
+    node "Punto de Acceso Público" as endpoint
+    note right of endpoint: URL HTTPS\nEscalamiento a Cero
+}
+
+' =========================================================
+' 2. BACKEND Y LÓGICA CORE (Contenedor Docker)
+' =========================================================
+
+node "📦 Contenedor Docker" as docker_env #D5F5E3 {
+    note top: **inventario-ia-api:v1**\n(Base: tiangolo/uvicorn-gunicorn-fastapi)
+    
+    component "💻 API (FastAPI)" as api #EAFAF1
+    component "🧠 Modelo TFLite" as model #FFF3E0
+}
+
+database "💾 Base de Datos" as db {
+    [Supabase]
+}
+
+' =========================================================
+' 3. FLUJO DE INFERENCIA (Relaciones)
+' =========================================================
+
+' A. Solicitud
+user --> frontend : 📸 Enviar Imagen
+frontend --> endpoint : 🌐 Petición de Inferencia (REST)
+
+' B. Ejecución en la Nube
+endpoint --> api : 🚀 Inicia Contenedor
+api --> model : 🔎 Carga y Predice
+api --> db : 🔗 Guarda/Consulta Datos
+
+' C. Respuesta
+api --> endpoint : Respuesta de Clasificación
+endpoint --> frontend : Respuesta JSON
+frontend --> user : Muestra Resultado
+
+' Flujo Lógico interno del contenedor (para orden)
+api -[hidden]right-> model
+api -[hidden]right-> db
+
+@enduml

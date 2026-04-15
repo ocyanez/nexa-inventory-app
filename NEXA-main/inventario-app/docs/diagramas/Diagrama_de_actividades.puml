@@ -1,0 +1,58 @@
+@startuml Diagrama_de_actividades_v2
+title Diagrama de Actividades - Proyecto APT
+start
+
+:Usuario abre aplicación;
+partition "Login" {
+    :Ir a pantalla de Login;
+    if (Credenciales correctas?) then (Sí)
+        :Accede a pantalla "Identifícate";
+        :Ingresar nombre y apellido;
+        :Registrar usuario en BD;
+    else (No)
+        :Mostrar mensaje de error;
+        stop
+    endif
+}
+
+partition "Home" {
+    :Visualizar tabla de productos;
+    :Seleccionar acción (Buscar / Reporte / Registrar / Editar / Perfil);
+
+    partition "Registrar Producto" {
+        if (Método?) then (Manual)
+            :Ingresar código manual;
+            if (Producto existe?) then (Sí)
+                :Autocompletar datos;
+            else (No)
+                :Ingresar datos completos;
+            endif
+        elseif (QR Pistola)
+            :Escanear QR → Autocompletar;
+        else (Cámara Móvil)
+            :Escanear con cámara → Autocompletar;
+        endif
+        :Tomar foto del producto;
+        :IA analiza estado;
+        :Guardar producto en BD;
+    }
+
+    partition "Editar Producto" {
+        :Seleccionar producto;
+        :Editar campos permitidos;
+        :Guardar cambios;
+    }
+
+    partition "Perfil" {
+        :Visualizar alias, correo, dispositivos, sesiones activas;
+    }
+
+    partition "Reportes" {
+        :Seleccionar tipo de reporte;
+        :Generar PDF;
+        :Descargar;
+    }
+}
+
+stop
+@enduml

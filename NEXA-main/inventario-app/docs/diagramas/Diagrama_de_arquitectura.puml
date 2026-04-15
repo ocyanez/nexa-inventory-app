@@ -1,0 +1,25 @@
+@startuml Diagrama_de_arquitectura
+title Diagrama de Arquitectura - Proyecto APT
+
+rectangle "Frontend (Ionic React)" as FE
+
+package "Backend Principal\n(Supabase)" as BEMAIN {
+    rectangle "API REST\n(Login, Usuarios, Inventario,\nOperaciones generales)" as API
+}
+
+package "Backend IA\n(Docker + FastAPI en Cloud Run)" as BEIA {
+    rectangle "Servicio de IA\n(Modelo TFLite / Análisis de Imágenes)" as IA
+}
+
+database "Supabase\n(Auth + DB + Storage)" as DB
+
+' Conexiones
+FE --> API : Requests HTTP/REST\nDatos, login, inventario
+FE --> IA : Envío de imágenes\npara clasificación
+
+API --> DB : Autenticación / CRUD\nUsuarios - Productos - Inventario
+
+IA --> FE : Resultado IA\n(nuevo / usado / mal estado)
+API --> FE : Respuesta datos\n(+ confirmaciones)
+
+@enduml

@@ -1,0 +1,79 @@
+@startuml Diagrama_ER_APT
+title Diagrama Entidad-Relación - Proyecto APT
+
+entity Usuario {
+    *id: uuid <<PK>>
+    nombre: text
+    email: text
+    rol: rol_usuario
+    activo: bool
+    creado_en: timestamp
+    created_at: timestamp
+    updated_at: timestamp
+}
+
+entity Producto {
+    *id: int <<PK>>
+    codigo_barras: text
+    marca: text
+    modelo: text
+    compatibilidad: text
+    sku: text
+    nombre: text
+    categoria_id: int <<FK>>
+    stock_minimo: numeric
+    observaciones: text
+    activo: bool
+    estado: text
+    disponibilidad: text
+    stock: int
+    imagen_url: text
+}
+
+entity Categoria {
+    *id: int <<PK>>
+    nombre: text
+    parent_id: int <<FK>>
+    activo: bool
+}
+
+entity Movimiento {
+    *id: int <<PK>>
+    fecha: timestamp
+    tipo: tipo_mov
+    producto_id: int <<FK>>
+    cantidad: numeric
+    usuario_id: uuid <<FK>>
+    motivo: text
+    referencia_ext: text
+    created_at: timestamp
+    updated_at: timestamp
+}
+
+entity Inspeccion {
+    *id: int <<PK>>
+    producto_id: int <<FK>>
+    modelo_id: int <<FK>>
+    etiqueta: text
+    confianza: numeric
+    detalles: jsonb
+}
+
+entity ModeloIA {
+    *id: int <<PK>>
+    nombre: text
+    version: text
+    proveedor: text
+    uri: text
+    created_at: timestamp
+    updated_at: timestamp
+}
+
+' Relaciones
+Usuario ||--o{ Movimiento : realiza
+Producto }o--|| Categoria : pertenece
+Producto ||--o{ Movimiento : genera
+Producto ||--o{ Inspeccion : verifica
+ModeloIA ||--o{ Inspeccion : utiliza
+
+@enduml

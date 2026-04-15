@@ -1,0 +1,67 @@
+@startuml Herramientas_App
+title Herramientas y Tecnologías de la App (NEXA)
+
+skinparam shadowing false
+skinparam dpi 150
+skinparam backgroundColor White
+
+skinparam node {
+    BackgroundColor White
+    BorderColor Black
+    FontColor Black
+    RoundCorner 15
+}
+skinparam folder {
+    BackgroundColor LightYellow
+    BorderColor Black
+}
+skinparam cloud {
+    BackgroundColor LightBlue
+    BorderColor Black
+}
+skinparam database {
+    BackgroundColor LightGreen
+    BorderColor Black
+}
+
+actor "👤 Equipo" as team
+
+' --- Desarrollo ---
+cloud "💻 Desarrollo" {
+    [VS Code]
+    [Git / Teamwork]
+}
+
+' --- Frontend ---
+node "🎨 Frontend" {
+    [TypeScript]
+    [React]
+    [Ionic Framework]
+    [Tailwind CSS]
+}
+
+' --- Backend / BD ---
+database "💾 Base de Datos" {
+    [Supabase]
+}
+
+' --- IA / ML ---
+folder "🤖 Inteligencia Artificial" {
+    [Python]
+    [TensorFlow / Keras]
+    [MobileNetV2]
+    [TFLite]
+    [Docker] 
+    [Google Cloud Run] 
+}
+
+' --- Distribución ---
+node "📱 Distribución" {
+    [APK Android]
+}
+
+' --- Relación visual ---
+team --> [VS Code]
+team --> [Git / Teamwork]
+
+@enduml

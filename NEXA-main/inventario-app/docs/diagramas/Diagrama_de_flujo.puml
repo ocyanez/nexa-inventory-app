@@ -1,0 +1,58 @@
+@startuml Diagrama_de_flujo_v2
+title Diagrama de Flujo - Proyecto APT
+
+start
+:Usuario abre app;
+:Ir a Login;
+
+if (Credenciales correctas?) then (Sí)
+    :Ingresar nombre y apellido;
+    :Registrar en BD;
+    :Acceso al Home;
+else (No)
+    :Mostrar mensaje de error;
+    stop
+endif
+
+:Elegir acción;
+
+if (Buscar producto?) then (Sí)
+    :Ingresar término;
+    :Mostrar resultados;
+endif
+
+if (Generar reporte?) then (Sí)
+    :Seleccionar tipo;
+    :Generar PDF;
+    :Descargar;
+endif
+
+if (Registrar producto?) then (Sí)
+    if (Manual?) then
+        :Ingresar código;
+        if (Existe?) then
+            :Autocompletar;
+        else
+            :Ingresar datos completos;
+        endif
+    elseif (QR Pistola) then
+        :Escanear → Autocompletar;
+    else
+        :Escanear cámara → Autocompletar;
+    endif
+    :IA analiza producto;
+    :Guardar en BD;
+endif
+
+if (Editar producto?) then (Sí)
+    :Seleccionar producto;
+    :Editar campos;
+    :Guardar;
+endif
+
+if (Ver perfil?) then (Sí)
+    :Mostrar alias, correo, dispositivos, sesiones;
+endif
+
+stop
+@enduml

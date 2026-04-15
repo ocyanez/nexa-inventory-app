@@ -1,0 +1,86 @@
+@startuml Diagrama_Clases_APT
+title Diagrama de Clases - Proyecto APT
+
+class Usuario {
+    +id: UUID
+    +nombre: String
+    +email: String
+    +rol: String
+    +activo: Boolean
+    +auth: UUID
+    --
+    +login()
+    +logout()
+    +registrarMovimiento()
+}
+
+class Producto {
+    +id: Int
+    +codigoBarras: String
+    +marca: String
+    +modelo: String
+    +compatibilidad: String
+    +sku: String
+    +nombre: String
+    +categoria_id: Int
+    +stock_minimo: Numeric
+    +observaciones: String
+    +activo: Boolean
+    +estado: String
+    +disponibilidad: String
+    +stock: Int
+    +imagen_url: String
+    --
+    +actualizarStock()
+    +asociarCategoria()
+    +agregarImagen()
+}
+
+class Categoria {
+    +id: Int
+    +nombre: String
+    +activo: Boolean
+    --
+    +agregarSubcategoria()
+    +listarProductos()
+}
+
+class Movimiento {
+    +id: Int
+    +fecha: DateTime
+    +tipo: String
+    +cantidad: Int
+    +motivo: String
+    --
+    +registrar()
+}
+
+class Inspeccion {
+    +id: Int
+    +etiqueta: String
+    +confianza: Float
+    +detalles: String
+    --
+    +validar()
+    +asociarModeloIA()
+}
+
+class ModeloIA {
+    +id: Int
+    +nombre: String
+    +version: String
+    +proveedor: String
+    +uri: String
+    --
+    +ejecutar()
+    +actualizar()
+}
+
+' Relaciones UML
+Usuario "1" --> "*" Movimiento
+Producto "*" --> "1" Categoria
+Producto "1" --> "*" Movimiento
+Producto "1" --> "*" Inspeccion
+ModeloIA "1" --> "*" Inspeccion
+
+@enduml
