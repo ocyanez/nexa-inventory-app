@@ -40,7 +40,7 @@ Pantalla de autenticación de usuarios.
 
 ### 🏠 Inicio
 Vista principal de la aplicación.
-![Inicio](assets/Inicio.png)
+[![Inicio](https://github.com/ocyanez/nexa-inventory-app/blob/main/assets/Inicio.png)
 
 ### 📦 Productos
 Gestión de inventario y productos.
